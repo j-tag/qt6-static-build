@@ -47,8 +47,8 @@ jobs:
           cd /c/src
           git clone --branch v${QT_VERSION} --depth 1 https://code.qt.io/qt/qt5.git qt6
           cd qt6
-          perl init-repository ^
-            --module-subset=qtbase,qtdeclarative,qtmultimedia,qtimageformats,qtnetworkauth,qtsvg ^
+          init-repository \
+            --module-subset=qtbase,qtdeclarative,qtmultimedia,qtimageformats,qtnetworkauth,qtsvg \
             --depth 1
 
       # Download static FFmpeg + OpenSSL
