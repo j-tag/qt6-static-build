@@ -5,7 +5,7 @@ on:
 
 env:
   QT_VERSION: 6.11.0
-  FFMPEG_URL: ${{ secrets.ffmpeg_base_url }}/ffmpeg-libs-win64-static.tar.gz?$(get-date -f yyyyMMddHHmmss)
+  FFMPEG_URL: ${{ secrets.ffmpeg_base_url }}/ffmpeg-libs-win64-static.tar.gz
   OPENSSL_URL: https://example.com/openssl-static-win64/openssl-win64-static.tar.gz
   BUILD_DIR: C:/qt-build
   INSTALL_DIR: C:/qt-static
@@ -56,7 +56,7 @@ jobs:
           mkdir -p /c/deps
           cd /c/deps
 
-          curl -L "${FFMPEG_URL}" -o ffmpeg.tar.gz
+          curl -L "${FFMPEG_URL}?$(date +%Y%m%d%H%M%S)" -o ffmpeg.tar.gz
           tar -xzf ffmpeg.tar.gz
 
           #curl -L "${OPENSSL_URL}" -o openssl.tar.gz
