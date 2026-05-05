@@ -142,6 +142,7 @@ jobs:
             -skip qtgraphs \
             -openssl-linked \
             -- \
+            #-DOPENSSL_ROOT_DIR=${DEPS_ROOT}/openssl-win64-static \
             -DOPENSSL_USE_STATIC_LIBS=ON \
             #-DFFMPEG_DIR=${DEPS_ROOT}/ffmpeg-libs-win64-static \
             #-DQT_FEATURE_ffmpeg=ON \
