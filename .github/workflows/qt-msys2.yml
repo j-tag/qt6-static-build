@@ -20,6 +20,7 @@ jobs:
         shell: msys2 {0}
 
     steps:
+      
       # MSYS2 + minimal required toolchain
       - name: Setup MSYS2
         uses: msys2/setup-msys2@v2
@@ -40,8 +41,16 @@ jobs:
             mingw-w64-x86_64-python
             mingw-w64-x86_64-perl
 
+      - name: Cache Qt
+        id: cache-qt
+        uses: actions/cache@v5
+        with:
+          path: C:/src/
+          key: ${{ runner.os }}-src
+          
       # Checkout Qt source only (shallow)
       - name: Clone Qt 6.11
+        if: steps.cache-qt.outputs.cache-hit != 'true'
         run: |
           mkdir -p /c/src
           cd /c/src
@@ -56,7 +65,7 @@ jobs:
           mkdir -p /c/deps
           cd /c/deps
 
-          curl -L "${FFMPEG_URL}?$(date +%Y%m%d%H%M%S)" -o ffmpeg.tar.gz
+          curl -L "${FFMPEG_URL}" -o ffmpeg.tar.gz
           tar -xzf ffmpeg.tar.gz
 
           #curl -L "${OPENSSL_URL}" -o openssl.tar.gz
