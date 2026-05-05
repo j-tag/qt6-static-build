@@ -65,8 +65,8 @@ jobs:
           mkdir -p /c/deps
           cd /c/deps
 
-          curl -L "${FFMPEG_URL}" -o ffmpeg.tar.gz
-          tar -xzf ffmpeg.tar.gz
+          #curl -L "${FFMPEG_URL}" -o ffmpeg.tar.gz
+          #tar -xzf ffmpeg.tar.gz
 
           #curl -L "${OPENSSL_URL}" -o openssl.tar.gz
           #tar -xzf openssl.tar.gz
@@ -143,8 +143,8 @@ jobs:
             -openssl-linked \
             -- \
             -DOPENSSL_USE_STATIC_LIBS=ON \
-            -DFFMPEG_DIR=${DEPS_ROOT}/ffmpeg-libs-win64-static \
-            -DQT_FEATURE_ffmpeg=ON \
+            #-DFFMPEG_DIR=${DEPS_ROOT}/ffmpeg-libs-win64-static \
+            #-DQT_FEATURE_ffmpeg=ON \
             -DQT_FEATURE_openssl=ON \
             -DQT_FEATURE_opensslv30=ON \
             -DCMAKE_BUILD_TYPE=Release \
